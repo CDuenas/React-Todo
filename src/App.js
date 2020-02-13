@@ -8,8 +8,29 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      
+      tasks: ""
     };
+  }
+
+  addTask = (e, task) => {
+    e.preventDefault();
+
+    const newTask = {
+      name: task,
+      id: Date.now(),
+      completed: false
+    };
+
+
+    //Add task Feature
+    this.setState({
+      tasks:[...this.state.tasks, newTask]
+    });
+
+    //Toggle Completed Feature
+
+
+    //Clear completed Feature
   }
   render() {
     return (
