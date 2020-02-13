@@ -37,12 +37,10 @@ class App extends React.Component {
       completed: false
     };
 
-
-    //Add task Feature
     this.setState({
       tasks: [...this.state.tasks, newTask]
     });
-  }
+  };
 
   //Toggle Completed Feature
   toggleItem = taskId => {
@@ -57,15 +55,20 @@ class App extends React.Component {
             completed: !task.completed
           }
         }
-
-
         return task;
       })
     })
   };
 
-
   //Clear completed Feature
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      tasks: this.state.tasks.filter(task => task.completed === false)
+    });
+  };
+
+
   render() {
     return (
       <div>
@@ -76,6 +79,7 @@ class App extends React.Component {
         <TodoList
           tasks={this.state.tasks}
           toggleItem={this.toggleItem}
+          clearCompleted={this.clearCompleted}
         />
       </div>
     );
